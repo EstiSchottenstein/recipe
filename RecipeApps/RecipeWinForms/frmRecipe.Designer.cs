@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRecipe));
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tblMain = new System.Windows.Forms.TableLayoutPanel();
             this.lblCaptionRecipeName = new System.Windows.Forms.Label();
             this.lblCaptionUserName = new System.Windows.Forms.Label();
             this.lblCaptionCalories = new System.Windows.Forms.Label();
@@ -51,47 +51,47 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.btnDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.tblMain.SuspendLayout();
             this.tsMain.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tableLayoutPanel1
+            // tblMain
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 32.10332F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67.89668F));
-            this.tableLayoutPanel1.Controls.Add(this.lblCaptionRecipeName, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.lblCaptionUserName, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.lblCaptionCalories, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.lblCaptionDateDraft, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.lblCaptionDatePublished, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.lblCaptionDateArchived, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.txtRecipeName, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.txtCalories, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.txtDatePublished, 1, 5);
-            this.tableLayoutPanel1.Controls.Add(this.txtDateArchived, 1, 6);
-            this.tableLayoutPanel1.Controls.Add(this.lblCaptionCuisine, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lblCaptionCurrentStatus, 0, 7);
-            this.tableLayoutPanel1.Controls.Add(this.txtCurrentStatus, 1, 7);
-            this.tableLayoutPanel1.Controls.Add(this.lstCuisineType, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lstUserName, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dtpDateDraft, 1, 4);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 32);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(491, 319);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tblMain.ColumnCount = 2;
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.50193F));
+            this.tblMain.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.49807F));
+            this.tblMain.Controls.Add(this.lblCaptionRecipeName, 0, 2);
+            this.tblMain.Controls.Add(this.lblCaptionUserName, 0, 3);
+            this.tblMain.Controls.Add(this.lblCaptionCalories, 0, 4);
+            this.tblMain.Controls.Add(this.lblCaptionDateDraft, 0, 5);
+            this.tblMain.Controls.Add(this.lblCaptionDatePublished, 0, 6);
+            this.tblMain.Controls.Add(this.lblCaptionDateArchived, 0, 7);
+            this.tblMain.Controls.Add(this.txtRecipeName, 1, 2);
+            this.tblMain.Controls.Add(this.txtCalories, 1, 4);
+            this.tblMain.Controls.Add(this.txtDatePublished, 1, 6);
+            this.tblMain.Controls.Add(this.txtDateArchived, 1, 7);
+            this.tblMain.Controls.Add(this.lblCaptionCuisine, 0, 1);
+            this.tblMain.Controls.Add(this.lblCaptionCurrentStatus, 0, 8);
+            this.tblMain.Controls.Add(this.txtCurrentStatus, 1, 8);
+            this.tblMain.Controls.Add(this.lstCuisineType, 1, 1);
+            this.tblMain.Controls.Add(this.lstUserName, 1, 3);
+            this.tblMain.Controls.Add(this.dtpDateDraft, 1, 5);
+            this.tblMain.Controls.Add(this.tsMain, 0, 0);
+            this.tblMain.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tblMain.Location = new System.Drawing.Point(0, 0);
+            this.tblMain.Name = "tblMain";
+            this.tblMain.RowCount = 9;
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tblMain.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 11.11111F));
+            this.tblMain.Size = new System.Drawing.Size(518, 359);
+            this.tblMain.TabIndex = 0;
             // 
             // lblCaptionRecipeName
             // 
@@ -261,6 +261,8 @@
             // 
             // tsMain
             // 
+            this.tableLayoutPanel1.SetColumnSpan(this.tsMain, 2);
+            this.tsMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tsMain.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.tsMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnSave,
@@ -307,13 +309,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(491, 352);
-            this.Controls.Add(this.tsMain);
+            this.ClientSize = new System.Drawing.Size(518, 359);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "frmRecipe";
             this.Text = "frmRecipe";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.tblMain.ResumeLayout(false);
+            this.tblMain.PerformLayout();
             this.tsMain.ResumeLayout(false);
             this.tsMain.PerformLayout();
             this.ResumeLayout(false);
@@ -323,7 +324,7 @@
 
         #endregion
 
-        private TableLayoutPanel tableLayoutPanel1;
+        private TableLayoutPanel tblMain;
         private Label lblCaptionRecipeName;
         private Label lblCaptionUserName;
         private Label lblCaptionCalories;
