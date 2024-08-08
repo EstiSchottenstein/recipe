@@ -1,8 +1,4 @@
-﻿using System.Data;
-using System.Data.SqlClient;
-using System.Diagnostics;
-
-namespace RecipeSystem
+﻿namespace RecipeSystem
 {
     public class Recipe
     {
@@ -44,7 +40,7 @@ namespace RecipeSystem
 
         public static void Save(DataTable dtrecipe)
         {
-            SQLUtility.DebugPrintDataTable(dtrecipe);
+            //SQLUtility.DebugPrintDataTable(dtrecipe);
             DataRow r = dtrecipe.Rows[0];
             int id = (int)r["RecipeId"];
             string sql = "";
@@ -64,7 +60,6 @@ namespace RecipeSystem
                 sql = "insert recipe(RecipeName, CuisineId, UsersId, Calories, DateDraft)";
                 sql += $"select '{r["RecipeName"]}', {r["CuisineId"]}, '{r["UsersId"]}', '{r["Calories"]}', '{r["DateDraft"]}'";
             }
-            Debug.Print("---------------");
 
             SQLUtility.ExecuteSQL(sql);
         }
