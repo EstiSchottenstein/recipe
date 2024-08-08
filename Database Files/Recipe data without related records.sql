@@ -21,5 +21,4 @@ on x.UserName = u.UserName
 join Cuisine c 
 on x.CuisineType = c.CuisineType 
 
-
 select * from Recipe
