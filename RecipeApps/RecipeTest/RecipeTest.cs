@@ -75,16 +75,14 @@ namespace RecipeTest
         }
 
         [Test]
-        public void DeleteRecipe()
+        public void DeleteRecipeWithoutRelatedRecordMealOrCookbook()
         {
             DataTable dt = SQLUtility.GetDataTable(string.Join(Environment.NewLine, "select top 1 ",
                 $"r.recipeid, r.RecipeName ",
                 $"from recipe r ",
                 $"left join CookbookRecipe cr on cr.recipeid = r.recipeid ",
                 $"left join MealCourseRecipe mcr on mcr.recipeid = r.recipeid ",
-                $"left join Direction d on d.recipeid = r.recipeid ",
-                $"left join RecipeIngredient ri on ri.recipeid = r.recipeid ",
-                $"where cr.cookbookrecipeid is null and mcr.mealcourserecipeid is null and d.directionid is null and ri.recipeingredientid is null"));
+                $"where cr.cookbookrecipeid is null and mcr.mealcourserecipeid is null"));
             int recipeid = 0;
             string recipedesc = "";
             if (dt.Rows.Count > 0)
@@ -92,8 +90,8 @@ namespace RecipeTest
                 recipeid = (int)dt.Rows[0]["recipeid"];
                 recipedesc = dt.Rows[0]["recipename"].ToString();
             }
-            Assume.That(recipeid > 0, "No recipes without related records in DB, can't run test");
-            TestContext.WriteLine("Existing recipe without related records with id = " + recipeid + " " + recipedesc);
+            Assume.That(recipeid > 0, "No recipes without related records meal or cookbook in DB, can't run test");
+            TestContext.WriteLine("Existing recipe without related records meal or cookbook with id = " + recipeid + " " + recipedesc);
             TestContext.WriteLine("Ensure that app can delete recipe " + recipeid);
             
             Recipe.Delete(dt);
@@ -110,9 +108,8 @@ namespace RecipeTest
                 $"r.recipeid, r.RecipeName ",
                 $"from recipe r ",
                 $"join CookbookRecipe cr on cr.recipeid = r.recipeid ",
-                $"join MealCourseRecipe mcr on mcr.recipeid = r.recipeid ",
-                $"join Direction d on d.recipeid = r.recipeid ",
-                $"join RecipeIngredient ri on ri.recipeid = r.recipeid"));
+                $"join MealCourseRecipe mcr on mcr.recipeid = r.recipeid "
+                ));
             int recipeid = 0;
             string recipedesc = "";
             if (dt.Rows.Count > 0)
@@ -120,7 +117,7 @@ namespace RecipeTest
                 recipeid = (int)dt.Rows[0]["recipeid"];
                 recipedesc = dt.Rows[0]["recipename"].ToString();
             }
-            Assume.That(recipeid > 0, "No recipes without related records in DB, can't run test");
+            Assume.That(recipeid > 0, "No recipes with related records in DB, can't run test");
             TestContext.WriteLine("Existing recipe with related records with id = " + recipeid + " " + recipedesc);
             TestContext.WriteLine("Ensure that app cannot delete recipe " + recipeid);
 
