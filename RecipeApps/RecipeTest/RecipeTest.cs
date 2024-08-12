@@ -82,7 +82,8 @@ namespace RecipeTest
                 $"from recipe r ",
                 $"left join CookbookRecipe cr on cr.recipeid = r.recipeid ",
                 $"left join MealCourseRecipe mcr on mcr.recipeid = r.recipeid ",
-                $"where cr.cookbookrecipeid is null and mcr.mealcourserecipeid is null"));
+                $"where cr.cookbookrecipeid is null and mcr.mealcourserecipeid is null",
+                $"and r.currentstatus = 'draft' or (r.currentstatus = 'archive' and datediff(day, r.DateArchived, CURRENT_TIMESTAMP) > 30) "));
             int recipeid = 0;
             string recipedesc = "";
             if (dt.Rows.Count > 0)
@@ -108,8 +109,8 @@ namespace RecipeTest
                 $"r.recipeid, r.RecipeName ",
                 $"from recipe r ",
                 $"join CookbookRecipe cr on cr.recipeid = r.recipeid ",
-                $"join MealCourseRecipe mcr on mcr.recipeid = r.recipeid "
-                ));
+                $"join MealCourseRecipe mcr on mcr.recipeid = r.recipeid ",
+                $"and r.currentstatus = 'draft' or (r.currentstatus = 'archive' and datediff(day, r.DateArchived, CURRENT_TIMESTAMP) > 30) "));
             int recipeid = 0;
             string recipedesc = "";
             if (dt.Rows.Count > 0)
@@ -119,6 +120,33 @@ namespace RecipeTest
             }
             Assume.That(recipeid > 0, "No recipes with related records in DB, can't run test");
             TestContext.WriteLine("Existing recipe with related records with id = " + recipeid + " " + recipedesc);
+            TestContext.WriteLine("Ensure that app cannot delete recipe " + recipeid);
+
+            Exception ex = Assert.Throws<Exception>(() => Recipe.Delete(dt));
+            TestContext.WriteLine(ex.Message);
+        }
+
+        [Test]
+        public void DeleteRecipeWithCurrentStatusPublishedOrArchivedForUnderThirtyDays()
+        {
+            DataTable dt = SQLUtility.GetDataTable(string.Join(Environment.NewLine, "select top 1 ",
+                $"r.recipeid, r.RecipeName, r.CurrentStatus ",
+                $"from recipe r ",
+                $"left join CookbookRecipe cr on cr.recipeid = r.recipeid ",
+                $"left join MealCourseRecipe mcr on mcr.recipeid = r.recipeid ",
+                $"where cr.cookbookrecipeid is null and mcr.mealcourserecipeid is null",
+                $"and r.currentstatus = 'published' or (r.currentstatus = 'archive' and datediff(day, r.DateArchived, CURRENT_TIMESTAMP) < 30) "));
+            int recipeid = 0;
+            string recipedesc = "";
+            string currentstatus = "";
+            if (dt.Rows.Count > 0)
+            {
+                recipeid = (int)dt.Rows[0]["recipeid"];
+                recipedesc = dt.Rows[0]["recipename"].ToString();
+                currentstatus = dt.Rows[0]["currentstatus"].ToString();
+            }
+            Assume.That(recipeid > 0, "No recipes with current status published or archived for under 30 days without related records meal or cookbook in DB, can't run test");
+            TestContext.WriteLine("Existing recipe without related records meal or cookbook with id = " + recipeid + " " + recipedesc + " with current status: " + currentstatus);
             TestContext.WriteLine("Ensure that app cannot delete recipe " + recipeid);
 
             Exception ex = Assert.Throws<Exception>(() => Recipe.Delete(dt));
