@@ -13,7 +13,7 @@ as
 begin
 	declare @return int = 0
 
-	select @RecipeId = isnull(@RecipeId,0), @DatePublished = nullif(@DatePublished,0), @DateArchived = nullif(@DateArchived,0)
+	select @RecipeId = isnull(@RecipeId,0), @DateDraft = isnull(@DateDraft, CURRENT_TIMESTAMP), @DatePublished = nullif(@DatePublished,0), @DateArchived = nullif(@DateArchived,0)
 
 	if @RecipeId = 0
 	begin
