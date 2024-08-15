@@ -1,8 +1,8 @@
 create or alter function dbo.RecipeDesc(@RecipeId int)
-returns varchar(250)
+returns varchar(100)
 as
 begin 
-	declare @value varchar(250) = ''
+	declare @value varchar(100) = ''
 
 	select @value = concat(r.RecipeName, ' (', c.CuisineType, ') has ', count(distinct ri.RecipeIngredientId), ' ingredients and ', count(distinct d.DirectionId), ' steps.')
 	from Recipe r 
